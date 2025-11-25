@@ -12,13 +12,14 @@ import Product from '../screens/main/product';
 import Ticket from '../screens/main/Ticket';
 import Tabnavigator from './Tabnavigator';
 import { RootStackParamList } from '../types';
+import Cart from '../screens/main/Cart';
 
-const Stack = createStackNavigator<RootStackParamList>();
+const Stack = createStackNavigator<RootStackParamList,string>();
 
 const AppNavigation: React.FC = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator screenOptions={{ headerShown: false }} initialRouteName="Welcome">
+      <Stack.Navigator id="root" screenOptions={{ headerShown: false }} initialRouteName="Welcome">
         <Stack.Screen name="Welcome" component={Welcome} />
         <Stack.Screen name="SignIn" component={Signin} />
         <Stack.Screen name="SignUp" component={Signup} />
@@ -29,6 +30,7 @@ const AppNavigation: React.FC = () => {
         <Stack.Screen name="Payment" component={Payment} />
         <Stack.Screen name="Ticket" component={Ticket} />
         <Stack.Screen name="Main" component={Tabnavigator} />
+        <Stack.Screen name="Cart" component={Cart} />
       </Stack.Navigator>
     </NavigationContainer>
   );

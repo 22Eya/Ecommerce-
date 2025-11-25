@@ -1,14 +1,17 @@
 export type RootStackParamList = {
+  Welcome: undefined;
   SignIn: undefined;
   SignUp: undefined;
   ForgetPass: undefined;
   ShopList: undefined;
+  
   Shop: { shopId: string } | undefined;
   Payment: { amount?: number; items?: Array<any> } | undefined;
   Product: { product?: { id: string; title: string; price: string; image: string } } | undefined;
   Ticket: { id: string; qrValue: string; amount: number } | undefined;
   // allow passing an initial tab to Main stack
   Main: { screen?: keyof TabParamList } | undefined;
+  Cart: undefined;
 };
 
 export type TabParamList = {

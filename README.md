@@ -135,3 +135,61 @@ If you have any questions or suggestions, feel free to contact me at eyabouallle
 
 Thank you for checking out this project! I hope it's helpful and provides a good starting point for your React Native e-commerce app development.
 tachments/assets/3e89acd9-04f4-4d63-9aca-bbb6f3199ff1" />
+⚠️ Dans le code, BACKEND_URL doit pointer vers leur propre machine, pas la tienne.
+Le plus simple pour eux : mettre par défaut
+const BACKEND_URL = 'http://10.0.2.2:8000';
+et utiliser un émulateur Android (dans ce cas, tout tourne sur le même PC).
+
+Étape C – Installer et lancer le backend (FastAPI)
+
+Depuis la racine du projet :
+
+cd backend
+python -m venv .venv
+# Windows :
+.\.venv\Scripts\activate
+# Linux/macOS :
+# source .venv/bin/activate
+
+pip install -r requirements.txt
+
+
+Puis ils créent leur propre fichier backend/.env :
+
+HF_API_TOKEN=hf_leurs_token_à_eux
+HF_MODEL_ID=meta-llama/Meta-Llama-3-8B-Instruct
+HF_API_TOKEN
+
+Chaque personne doit avoir son propre compte Hugging Face et son propre token (on ne partage pas le tien).
+
+Les étapes (pour tes camarades) :
+
+Aller sur https://huggingface.co
+
+Créer un compte ou se connecter
+
+En haut à droite, cliquer sur l’avatar → Settings
+
+Dans le menu à gauche, aller sur Access Tokens
+
+Cliquer sur New token / Create new token
+
+Remplir :
+
+Name : par ex. mall-assistant
+
+Role / Permissions : Read
+
+
+Enfin, lancer deux terminales le serveur :
+
+uvicorn main:app --reload --port 8000 --host 0.0.0.0
+et un autre terminal pour npx expo start
+
+S’ils utilisent émulateur Android → BACKEND_URL = 'http://10.0.2.2:8000'
+
+S’ils utilisent Expo Go sur téléphone :
+
+trouver leur IP avec ipconfig (par ex. 192.168.x.y)
+
+mettre BACKEND_URL = 'http://192.168.x.y:8000'
